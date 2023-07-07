@@ -21,19 +21,8 @@ jobs:
       fail-fast: false
       matrix:  # https://docs.djangoproject.com/en/4.1/faq/install
         django-version: ["3.2", "4.0", "4.1", "4.2"]
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
-        elastic-version: ["1.7", "2.4", "5.5", "7.13.1"]
-        exclude:
-          - django-version: "4.0"
-            python-version: "3.7"
-          - django-version: "4.1"
-            python-version: "3.7"
-          - django-version: "4.2"
-            python-version: "3.7"
-        include:
-          - django-version: "4.1"
-            python-version: "3.11"
-            elastic-version: "7.13.1"
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        elastic-version: ["5.5", "7.13.1"]
     services:
       elastic:
         image: elasticsearch:${{ matrix.elastic-version }}
@@ -47,7 +36,7 @@ jobs:
         ports:
           - 9200:9200
       solr:
-        image: solr:6
+        image: solr:9
         ports:
           - 9001:9001
     steps:
