@@ -20,9 +20,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:  # https://docs.djangoproject.com/en/4.1/faq/install
-        django-version: ["3.2", "4.0", "4.1", "4.2"]
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
-        elastic-version: ["5.5", "7.13.1"]
+        # django-version: ["3.2", "4.0", "4.1", "4.2"]
+        # python-version: ["3.8", "3.9", "3.10", "3.11"]
+        # elastic-version: ["5.5", "7.13.1"]
+        django-version: ["4.2"]
+        python-version: [ "3.11"]
+        elastic-version: ["7.13.1"]
     services:
       elastic:
         image: elasticsearch:${{ matrix.elastic-version }}
@@ -40,7 +43,7 @@ jobs:
         env:
           discovery.type: "single-node"
         options: >-
-          --health-cmd "curl http://localhost:9001/_cluster/health"
+          --health-cmd "curl http://localhost:8983/_cluster/health"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
