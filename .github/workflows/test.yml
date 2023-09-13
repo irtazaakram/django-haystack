@@ -10,7 +10,7 @@ jobs:
   ruff:  # https://beta.ruff.rs
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - run: pip install --user ruff
     - run: ruff --format=github .
 
@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:  # https://docs.djangoproject.com/en/4.1/faq/install
-        # django-version: ["3.2", "4.0", "4.1", "4.2"]
+        # django-version: ["3.2", "4.1", "4.2"]
         # python-version: ["3.8", "3.9", "3.10", "3.11"]
         # elastic-version: ["5.5", "7.13.1"]
         django-version: ["4.2"]
@@ -50,7 +50,7 @@ jobs:
         ports:
           - 9001:8983
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:

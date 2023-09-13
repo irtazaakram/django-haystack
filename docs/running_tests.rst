@@ -40,7 +40,7 @@ to get a list of possible options::
 Configuring Solr
 ================
 
-Haystack assumes that you have a Solr server running on port ``9001`` which
+Haystack assumes that you have a Solr server running on port ``8983`` which
 uses the schema and configuration provided in the
 ``test_haystack/solr_tests/server/`` directory. For convenience, a script is
 provided which will download, configure and start a test Solr server::
