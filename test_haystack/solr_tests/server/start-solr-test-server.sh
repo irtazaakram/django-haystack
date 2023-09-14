@@ -2,7 +2,7 @@
 
 set -e
 
-SOLR_VERSION=9.3
+SOLR_VERSION=9.3.0
 SOLR_DIR=solr
 
 
