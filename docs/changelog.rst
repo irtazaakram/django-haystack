@@ -586,7 +586,7 @@ Other
   instances using Docker images with something like this:
 
   ```
-  TEST_ELASTICSEARCH_1_URL="http://$(docker port elasticsearch-1.7 9200/tcp)/" TEST_SOLR_URL="http://$(docker port solr-6 9001/tcp)/solr/" test_haystack/run_tests.py
+  TEST_ELASTICSEARCH_1_URL="http://$(docker port elasticsearch-1.7 9200/tcp)/" TEST_SOLR_URL="http://$(docker port solr-6 8983/tcp)/solr/" test_haystack/run_tests.py
   ```
 
   See #1408

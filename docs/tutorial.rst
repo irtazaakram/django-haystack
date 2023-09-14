@@ -120,9 +120,9 @@ Example (Solr 4.X)::
     HAYSTACK_CONNECTIONS = {
         'default': {
             'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-            'URL': 'http://127.0.0.1:9001/solr'
+            'URL': 'http://127.0.0.1:8983/solr'
             # ...or for multicore...
-            # 'URL': 'http://127.0.0.1:9001/solr/mysite',
+            # 'URL': 'http://127.0.0.1:8983/solr/mysite',
         },
     }
 
@@ -131,10 +131,10 @@ Example (Solr 6.X)::
     HAYSTACK_CONNECTIONS = {
         'default': {
             'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-            'URL': 'http://127.0.0.1:9001/solr/tester',                 # Assuming you created a core named 'tester' as described in installing search engines.
-            'ADMIN_URL': 'http://127.0.0.1:9001/solr/admin/cores'
+            'URL': 'http://127.0.0.1:8983/solr/tester',                 # Assuming you created a core named 'tester' as described in installing search engines.
+            'ADMIN_URL': 'http://127.0.0.1:8983/solr/admin/cores'
             # ...or for multicore...
-            # 'URL': 'http://127.0.0.1:9001/solr/mysite',
+            # 'URL': 'http://127.0.0.1:8983/solr/mysite',
         },
     }
 
