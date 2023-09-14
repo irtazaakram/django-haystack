@@ -111,3 +111,5 @@ if "elasticsearch" in HAYSTACK_CONNECTIONS:
             )
     except ImportError:
         del HAYSTACK_CONNECTIONS["elasticsearch"]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

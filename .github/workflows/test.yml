@@ -61,6 +61,7 @@ jobs:
     - name: Create Solr core
       run: |
         docker exec solr_container solr create -c collection1 -n basic_config
+        docker exec solr_container solr create -c mgmnt
     - name: Run test
       run: tox -v
       env:
