@@ -5,9 +5,9 @@ import time
 
 import requests
 
-max_retries = 100
+max_retries = 2
 retry_count = 0
-retry_delay = 15
+retry_delay = 10
 status_url = "http://localhost:9001/solr/collection1/admin/ping"
 
 
