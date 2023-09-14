@@ -66,7 +66,7 @@ jobs:
         python setup.py clean build install
     - name: Create Solr server
       run: |
-        .test_haystack/solr_tests/server/start-solr-test-server.sh
+        test_haystack/solr_tests/server/start-solr-test-server.sh
     - name: Run test
       run: tox -v
       env:
