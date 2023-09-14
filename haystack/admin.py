@@ -100,9 +100,9 @@ class SearchModelAdminMixin:
             "list_editable": self.list_editable,
             "list_max_show_all": self.list_max_show_all,
             "model_admin": self,
+            "sortable_by": self.get_sortable_by(request),
+            "search_help_text": self.search_help_text,
         }
-        if hasattr(self, "get_sortable_by"):  # Django 2.1+
-            kwargs["sortable_by"] = self.get_sortable_by(request)
         changelist = SearchChangeList(**kwargs)
         changelist.formset = None
         media = self.media
