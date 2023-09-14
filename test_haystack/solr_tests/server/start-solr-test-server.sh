@@ -36,8 +36,8 @@ tar -C ${SOLR_DIR} -xf ${SOLR_ARCHIVE} --strip-components=1
 
 # These tuning options will break on Java 10 and for testing we don't care about
 # production server optimizations:
-# export GC_LOG_OPTS=""
-# export GC_TUNE=""
+export GC_LOG_OPTS=""
+export GC_TUNE=""
 
 export SOLR_LOGS_DIR="${FULL_SOLR_DIR}/logs"
 
@@ -66,7 +66,7 @@ echo 'Starting server'
 cd server
 # We use exec to allow process monitors to correctly kill the
 # actual Java process rather than this launcher script:
-export CMD="java -Djetty.port=${SOLR_PORT} -Djava.awt.headless=true -Dapple.awt.UIElement=true -jar start.jar --module=http"
+export CMD="java -Djetty.port=${SOLR_PORT} -Djava.awt.headless=true -Dapple.awt.UIElement=true -jar start.jar --module=http -Dsolr.install.dir=${FULL_SOLR_DIR} -Dsolr.log.dir=${SOLR_LOGS_DIR}"
 
 if [ -z "${BACKGROUND_SOLR}" ]; then
     exec $CMD
