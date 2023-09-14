@@ -40,15 +40,10 @@ jobs:
           - 9200:9200
       solr:
         image: solr:latest
-        env:
-          discovery.type: "single-node"
-        options: >-
-          --health-cmd "curl http://localhost:9001/_cluster/health"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 10
         ports:
           - 9001:8983
+        options: >-
+          --name solr_container
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
@@ -63,6 +58,9 @@ jobs:
         pip install coverage requests tox tox-gh-actions
         pip install django==${{ matrix.django-version }} elasticsearch==${{ matrix.elastic-version }}
         python setup.py clean build install
+    - name: Create Solr core
+      run: |
+        docker exec solr_container solr create -c collection1 -n basic_config
     - name: Run test
       run: tox -v
       env:
