@@ -36,8 +36,8 @@ tar -C ${SOLR_DIR} -xf ${SOLR_ARCHIVE} --strip-components=1
 
 # These tuning options will break on Java 10 and for testing we don't care about
 # production server optimizations:
-export GC_LOG_OPTS=""
-export GC_TUNE=""
+# export GC_LOG_OPTS=""
+# export GC_TUNE=""
 
 export SOLR_LOGS_DIR="${FULL_SOLR_DIR}/logs"
 
