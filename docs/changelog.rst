@@ -1554,7 +1554,7 @@ v2.2.1 (2014-09-03)
   * Tox: wait for Solr to start before running tests
   * Travis: allow solr & pip downloads to be cached
   * Travis now uses start-solr-test-server.sh instead of travis-solr
-  * Test Solr configuration uses port 9001 universally as per the
+  * Test Solr configuration uses port 8983 universally as per the
     documentation
   * Change start-solr-test-server.sh to change into its containing
     directory, which also allows us to remove the realpath dependency

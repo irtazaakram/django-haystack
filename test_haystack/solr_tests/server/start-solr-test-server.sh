@@ -6,7 +6,7 @@ SOLR_VERSION=9.3.0
 SOLR_DIR=solr
 
 
-SOLR_PORT=9001
+SOLR_PORT=8983
 
 cd $(dirname $0)
 
@@ -53,7 +53,7 @@ echo "Creating Solr Core"
 ./bin/solr create -c mgmnt -p ${SOLR_PORT}
 
 echo "Solr system information:"
-curl --fail --silent 'http://localhost:9001/solr/admin/info/system?wt=json&indent=on' | python -m json.tool
+curl --fail --silent 'http://localhost:8983/solr/admin/info/system?wt=json&indent=on' | python -m json.tool
 ./bin/solr stop -p ${SOLR_PORT}
 
 CONF_DIR=${TEST_ROOT}/confdir
