@@ -66,7 +66,7 @@ echo 'Starting server'
 cd server
 # We use exec to allow process monitors to correctly kill the
 # actual Java process rather than this launcher script:
-export CMD="java -Djetty.port=${SOLR_PORT} -Djava.awt.headless=true -Dapple.awt.UIElement=true -jar start.jar --module=http -Dsolr.install.dir=${FULL_SOLR_DIR} -Dsolr.log.dir=${SOLR_LOGS_DIR}"
+export CMD="java -Djetty.port=${SOLR_PORT} -Djava.awt.headless=true -Dapple.awt.UIElement=true -jar start.jar --module=http"
 
 if [ -z "${BACKGROUND_SOLR}" ]; then
     exec $CMD
