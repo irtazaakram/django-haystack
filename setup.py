@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from setuptools import setup
 
-install_requires = ["Django>=2.2"]
+install_requires = ["Django<4"]
 
 tests_require = [
     "pysolr>=3.7.0",
