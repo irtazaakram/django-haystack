@@ -40,10 +40,16 @@ jobs:
           - 9200:9200
       solr:
         image: solr:latest
+        env:
+          discovery.type: "single-node"
+        options: >-
+          --health-cmd "curl http://localhost:8983/_cluster/health"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+          --name solr_container
         ports:
           - 9001:8983
-        options: >-
-          --name solr_container
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}

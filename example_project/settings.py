@@ -40,5 +40,3 @@ HAYSTACK_CONNECTIONS = {
     #     'PATH': os.path.join(os.path.dirname(__file__), 'xapian_index'),
     # }
 }
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
