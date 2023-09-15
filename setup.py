@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 from setuptools import setup
 
-install_requires = ["Django>=2.2"]
+install_requires = ["Django>=3.2"]
 
 tests_require = [
     "pysolr>=3.7.0",
     "whoosh>=2.5.4,<3.0",
     "python-dateutil",
-    "geopy==2.0.0",
+    "geopy==2.4.0",
     "coverage",
     "requests",
 ]
@@ -39,18 +39,18 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
         "Framework :: Django",
-        "Framework :: Django :: 2.2",
-        "Framework :: Django :: 3.1",
         "Framework :: Django :: 3.2",
+        "Framework :: Django :: 4.1",
+        "Framework :: Django :: 4.2",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Topic :: Utilities",
     ],
     zip_safe=False,

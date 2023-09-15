@@ -2,11 +2,11 @@
 
 set -e
 
-SOLR_VERSION=6.6.4
+SOLR_VERSION=9.3.0
 SOLR_DIR=solr
 
 
-SOLR_PORT=9001
+SOLR_PORT=8983
 
 cd $(dirname $0)
 
@@ -53,11 +53,12 @@ echo "Creating Solr Core"
 ./bin/solr create -c mgmnt -p ${SOLR_PORT}
 
 echo "Solr system information:"
-curl --fail --silent 'http://localhost:9001/solr/admin/info/system?wt=json&indent=on' | python -m json.tool
+curl --fail --silent 'http://localhost:8983/solr/admin/info/system?wt=json&indent=on' | python -m json.tool
 ./bin/solr stop -p ${SOLR_PORT}
 
 CONF_DIR=${TEST_ROOT}/confdir
 CORE_DIR=${FULL_SOLR_DIR}/server/solr/collection1
+mkdir ${CORE_DIR}/conf/managed-schema
 mv ${CORE_DIR}/conf/managed-schema ${CORE_DIR}/conf/managed-schema.old
 cp ${CONF_DIR}/* ${CORE_DIR}/conf/
 

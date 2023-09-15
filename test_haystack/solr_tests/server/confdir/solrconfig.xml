@@ -35,7 +35,7 @@
        that you fully re-index after changing this setting as it can
        affect both how text is indexed and queried.
   -->
-  <luceneMatchVersion>6.5.0</luceneMatchVersion>
+  <luceneMatchVersion>9.7.0</luceneMatchVersion>
   <schemaFactory class="ClassicIndexSchemaFactory"/>
 
   <!-- <lib/> directives can be used to instruct Solr to load any Jars
@@ -73,17 +73,17 @@
        The examples below can be used to load some solr-contribs along
        with their external dependencies.
     -->
-  <lib dir="${solr.install.dir:../../../..}/contrib/extraction/lib" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-cell-\d.*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/modules/extraction/lib" regex=".*\.jar" />
+  <!-- <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-cell-\d.*\.jar" /> -->
 
-  <lib dir="${solr.install.dir:../../../..}/contrib/clustering/lib/" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-clustering-\d.*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/modules/clustering/lib/" regex=".*\.jar" />
+  <!-- <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-clustering-\d.*\.jar" /> -->
 
-  <lib dir="${solr.install.dir:../../../..}/contrib/langid/lib/" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-langid-\d.*\.jar" />
-
+  <lib dir="${solr.install.dir:../../../..}/modules/langid/lib/" regex=".*\.jar" />
+  <!-- <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-langid-\d.*\.jar" /> -->
+<!-- 
   <lib dir="${solr.install.dir:../../../..}/contrib/velocity/lib" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-velocity-\d.*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-velocity-\d.*\.jar" /> -->
   <!-- an exact 'path' can be used instead of a 'dir' to specify a
        specific jar file.  This will cause a serious error to be logged
        if it can't be loaded.
@@ -259,7 +259,7 @@
 
        For more details see http://wiki.apache.org/solr/SolrJmx
     -->
-  <jmx />
+  <!-- <jmx /> -->
   <!-- If you want to connect to a particular server, specify the
        agentId
     -->
@@ -653,8 +653,7 @@
          using enableRemoteStreaming="true"
 
       -->
-    <requestParsers enableRemoteStreaming="true"
-                    multipartUploadLimitInKB="2048000"
+    <requestParsers multipartUploadLimitInKB="2048000"
                     formdataUploadLimitInKB="2048"
                     addHttpRequestToContext="false"/>
 

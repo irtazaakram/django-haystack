@@ -10,7 +10,7 @@ jobs:
   ruff:  # https://beta.ruff.rs
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - run: pip install --user ruff
     - run: ruff --format=github .
 
@@ -19,19 +19,13 @@ jobs:
     needs: ruff  # Do not run the tests if linting fails.
     strategy:
       fail-fast: false
-      matrix:  # https://docs.djangoproject.com/en/4.1/faq/install
-        django-version: ["3.2", "4.0", "4.1"]
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
-        elastic-version: ["1.7", "2.4", "5.5", "7.13.1"]
+      matrix:  # https://docs.djangoproject.com/en/4.2/faq/install
+        django-version: ["3.2", "4.1", "4.2"]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        elastic-version: ["5.5.2", "7.17.9"]
         exclude:
-          - django-version: "4.0"
-            python-version: "3.7"
-          - django-version: "4.1"
-            python-version: "3.7"
-        include:
-          - django-version: "4.1"
+          - django-version: "3.2"
             python-version: "3.11"
-            elastic-version: "7.13.1"
     services:
       elastic:
         image: elasticsearch:${{ matrix.elastic-version }}
@@ -44,24 +38,30 @@ jobs:
           --health-retries 10
         ports:
           - 9200:9200
-      solr:
-        image: solr:6
-        ports:
-          - 9001:9001
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Set up Java 11
+      uses: actions/setup-java@v3
+      with:
+        distribution: "temurin"
+        java-version: "11"
     - name: Install system dependencies
       run: sudo apt install --no-install-recommends -y gdal-bin
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip setuptools wheel
         pip install coverage requests tox tox-gh-actions
-        pip install django==${{ matrix.django-version }} elasticsearch==${{ matrix.elastic-version }}
         python setup.py clean build install
+        pip install django==${{ matrix.django-version }} elasticsearch==${{ matrix.elastic-version }}
+    - name: Start Solr Server
+      run:
+        test_haystack/solr_tests/server/start-solr-test-server.sh
+      env:
+        BACKGROUND_SOLR: true
     - name: Run test
       run: tox -v
       env:
